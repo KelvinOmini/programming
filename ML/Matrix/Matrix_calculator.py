@@ -1,6 +1,5 @@
-import Matrix.SVD as SVD
 import numpy as np  # Import the NumPy library and alias it as np.
-import Matrix.rank as rank
+import matrix_approxi
 
 class Matrix:  # Define a class named Matrix for handling matrix operations.
     
