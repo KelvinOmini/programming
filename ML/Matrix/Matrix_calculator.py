@@ -226,17 +226,30 @@ while True:
     
     elif operationChoice == '3':
         matrix = get_matrix()
-        U, S, V = SVD.svd(matrix)
-        print(SVD.format_matrix(U), "\n") 
-        print(SVD.vector_to_diagonal_matrix(S), "\n") 
-        print(SVD.format_matrix(V))
+        Rank = len(matrix[0])  # Simplified rank calculation
+        U, S, VT = matrix_approxi.svd(matrix)
+
+        print("U matrix:")
+        print(matrix_approxi.format_matrix(U))
+        print("\nSigma (Singular values) matrix:")
+        print(matrix_approxi.format_matrix(matrix_approxi.vector_to_diagonal_matrix(S)))
+        print("\nVT matrix:")
+        print(matrix_approxi.format_matrix(VT))
 
     elif operationChoice == '4':
-        Rank = rank.rank_of_matix(matrix)
+        # Rank = rank_of_matix(matrix)
         print('Rank of matrix:', Rank)
 
     elif operationChoice == '5':
-        pass
+        matrix = get_matrix()
+        Rank = len(matrix[0])  # Simplified rank calculation
+        U, S, VT = matrix_approxi.svd(matrix)
+        
+        Approximate_rank = matrix_approxi.approximate_matrix(U, S, VT, Rank)
+        print("\nApproximated Matrix:")
+        for row in Approximate_rank:
+            print(row)
+
 
     else:
         print("Invalid operation choice, try again!")
